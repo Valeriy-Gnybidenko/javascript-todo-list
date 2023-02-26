@@ -1,0 +1,219 @@
+.todo-list {
+  padding-top: vw(100);
+  padding-bottom: vw(100);
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+}
+
+.todo-list__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: vw(600);
+  background-color: var(--white);
+  border-radius: 32px;
+  padding: vw(20) vw(72);
+}
+
+.todo-list__title {
+  font-size: vw(48);
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  color: #11175e;
+  letter-spacing: 0.01em;
+}
+
+.todo-list__input-wrapper {
+  position: relative;
+  margin-top: vw(32);
+  width: 100%;
+}
+
+.todo-list__input {
+  width: 100%;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  padding: vw(20);
+  padding-right: vw(100);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: vw(16);
+  line-height: 110%;
+  letter-spacing: 0.01em;
+  font-feature-settings: 'liga' off;
+  transition: border 0.2s ease;
+
+  &::placeholder {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: vw(16);
+    line-height: 110%;
+    letter-spacing: 0.01em;
+    font-feature-settings: 'liga' off;
+    color: #b1bacb;
+  }
+
+  &:focus {
+    border: 1px solid #11175e;
+  }
+}
+
+.todo-list__label {
+  position: absolute;
+  bottom: vw(7);
+  right: vw(7);
+}
+
+.todo-list__btn {
+  background-color: #2d70fd;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  padding: vw(12) vw(24);
+  font-size: vw(18);
+  letter-spacing: 0.01em;
+  font-feature-settings: 'liga' off;
+  color: var(--white);
+  border-radius: 4px;
+  transition: background-color 0.1s ease;
+
+  &:hover {
+    background-color: #255eda;
+  }
+
+  &:active {
+    background-color: #153884;
+  }
+}
+
+.todo-list__items-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: vw(50);
+  width: 100%;
+  row-gap: vw(24);
+  height: vw(300);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: scroll;
+}
+
+.todo-list__items-list {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.todo-list__item {
+  display: flex;
+  align-items: center;
+  column-gap: vw(16);
+}
+
+.todo-list__checkbox-wrapper {
+  position: relative;
+}
+
+.todo-list__checkbox[type='checkbox'] {
+  display: none;
+
+  & + .todo-list__checkbox-label {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #11175e;
+    border-radius: 50%;
+    padding: vw(8);
+    transition: background-color 0.2s ease;
+
+    svg {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  &:checked {
+    & + .todo-list__checkbox-label {
+      background-color: #11175e;
+
+      svg {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.todo-list__text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: vw(18);
+  line-height: 110%;
+  letter-spacing: 0.01em;
+  font-feature-settings: 'liga' off;
+  color: #001747;
+}
+
+.todo-list__line {
+  height: 2px;
+  width: 100%;
+  background-color: var(--bg);
+  margin-top: vw(170);
+}
+
+.todo-list__info-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: vw(24);
+}
+
+.todo-list__selected {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: vw(16);
+  line-height: 110%;
+  letter-spacing: 0.01em;
+  font-feature-settings: 'liga' off;
+  color: #b1bacb;
+}
+
+.todo-list__remove-btn {
+  position: relative;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: vw(16);
+  line-height: 110%;
+  letter-spacing: 0.01em;
+  font-feature-settings: 'liga' off;
+  color: #b1bacb;
+  background-color: transparent;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: rgb(105, 104, 104);
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      top: vw(16);
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid rgb(105, 104, 104);
+    }
+  }
+
+  &:active {
+    color: #000000;
+  }
+}
