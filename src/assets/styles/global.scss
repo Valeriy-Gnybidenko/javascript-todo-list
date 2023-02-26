@@ -1,0 +1,82 @@
+* {
+  &::selection {
+    color: white;
+    background: var(--main);
+  }
+}
+
+.container {
+  width: 100%;
+  position: relative;
+  padding-left: vw(75);
+  padding-right: vw(75);
+
+  @media (max-width: $br1) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media (max-width: $br3) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  &--nm {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: vw(20);
+  row-gap: vw(20);
+  grid-auto-flow: row;
+
+  @media (max-width: $br1) {
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+
+  @media (max-width: $br4) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.section {
+  padding-top: vw(100);
+
+  &--pb {
+    padding-bottom: vw(100);
+  }
+
+  &--nm {
+    padding-top: 0;
+  }
+
+  @media (max-width: $br1) {
+    padding-top: 75px;
+
+    &--pb {
+      padding-bottom: 75px;
+    }
+  }
+
+  @media (max-width: $br3) {
+    padding-top: 70px;
+
+    &--pb {
+      padding-bottom: 70px;
+    }
+  }
+}
+
+.ratio-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  // aspect-ratio: ratio(800, 800);
+}
