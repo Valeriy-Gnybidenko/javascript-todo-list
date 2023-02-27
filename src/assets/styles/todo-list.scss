@@ -199,6 +199,7 @@
   color: #b1bacb;
   background-color: transparent;
   transition: color 0.2s ease;
+  aspect-ratio: ratio(1200, 200);
 
   &:hover {
     color: rgb(105, 104, 104);

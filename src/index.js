@@ -4,19 +4,20 @@ import './assets/styles/index.scss';
 const input = document.querySelector('.todo-list__input');
 const inputBtn = document.querySelector('.todo-list__btn');
 const itemsList = document.querySelector('.todo-list__items-list');
-const checkboxes = document.querySelectorAll('.todo-list__checkbox');
-const text = document.querySelectorAll('.todo-list__text');
 const removeAllBtn = document.querySelector('.todo-list__remove-btn');
+const count = document.querySelector('.todo-list__count');
 let numberId = 0;
+let counter = 0;
+let myItems = [];
 
 const addItem = () => {
-  // let inputValue;
-  // const onInput = (e) => {
-  //   inputValue = e.target.value;
-  // };
+  let text = '';
+  if (!input.value.trim().length) {
+    return;
+  }
+  text = input.value;
 
-  // input.addEventListener('input', onInput);
-
+  input.value = '';
   numberId++;
   let newItem = document.createElement('li');
   let newItemInfo = `<div class="todo-list__checkbox-wrapper">
@@ -42,18 +43,38 @@ const addItem = () => {
     </svg>
   </label>
 </div>
-<p class="todo-list__text">New list item</p>`;
+<p class="todo-list__text">${text}</p>`;
   newItem.classList.add('todo-list__item');
   newItem.innerHTML = newItemInfo;
   itemsList.append(newItem);
+  const checkbox = newItem.querySelector('.todo-list__checkbox');
+  const itemText = newItem.querySelector('.todo-list__text');
+  checkbox.addEventListener('click', () => {
+    if (checkbox.checked) {
+      counter++;
+      createSelectedText(counter);
+      itemText.style.textDecoration = 'line-through';
+      itemText.style.color = '#b8b8b8';
+    } else {
+      counter--;
+      createSelectedText(counter);
+      itemText.style.textDecoration = 'none';
+      itemText.style.color = '#001747';
+    }
+  });
+  myItems.push(newItem);
 };
 
 const removeAllItems = () => {
-  const items = itemsList.querySelectorAll('.todo-list__item');
-
-  items.forEach((item) => {
+  myItems.forEach((item) => {
     item.remove();
   });
+  counter = 0;
+  createSelectedText(counter);
+};
+
+const createSelectedText = (number) => {
+  count.innerHTML = number;
 };
 
 removeAllBtn.addEventListener('click', removeAllItems);
