@@ -10,15 +10,7 @@ let numberId = 0;
 let counter = 0;
 let myItems = [];
 
-const addItem = () => {
-  let text = '';
-  if (!input.value.trim().length) {
-    return;
-  }
-  text = input.value;
-
-  input.value = '';
-  numberId++;
+const createElement = (text) => {
   let newItem = document.createElement('li');
   let newItemInfo = `<div class="todo-list__checkbox-wrapper">
   <input
@@ -47,8 +39,12 @@ const addItem = () => {
   newItem.classList.add('todo-list__item');
   newItem.innerHTML = newItemInfo;
   itemsList.append(newItem);
-  const checkbox = newItem.querySelector('.todo-list__checkbox');
-  const itemText = newItem.querySelector('.todo-list__text');
+  return newItem;
+};
+
+const checkboxHandler = (element) => {
+  const checkbox = element.querySelector('.todo-list__checkbox');
+  const itemText = element.querySelector('.todo-list__text');
   checkbox.addEventListener('click', () => {
     if (checkbox.checked) {
       counter++;
@@ -62,6 +58,19 @@ const addItem = () => {
       itemText.style.color = '#001747';
     }
   });
+};
+
+const addItem = () => {
+  let text = '';
+  if (!input.value.trim().length) {
+    return;
+  }
+  text = input.value;
+  const newItem = createElement(text);
+  input.value = '';
+  numberId++;
+  checkboxHandler(newItem);
+
   myItems.push(newItem);
 };
 

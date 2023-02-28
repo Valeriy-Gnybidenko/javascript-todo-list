@@ -4,10 +4,10 @@
   "description": "My template for easy codding",
   "main": "index.js",
   "scripts": {
-    "build": "yarn webpack --node-env=production",
-    "dev": "yarn webpack serve --open",
+    "build": "webpack --node-env=production",
+    "dev": "webpack serve --open",
     "clear": "rd /s /q dist",
-    "prod": "yarn webpack serve --mode production --open"
+    "prod": "webpack serve --mode production --open"
   },
   "author": "Valeriy Hnybidenko",
   "license": "ISC",
